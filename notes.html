@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quick Copy Credentials & Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OS Sandbox Lab — Quick Test & Clipboard Pad</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -20,30 +21,47 @@
       border-radius: 12px;
       padding: 28px;
       width: 100%;
-      max-width: 680px;
+      max-width: 720px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
     h1 {
-      font-size: 20px;
+      font-size: 22px;
       margin-top: 0;
       margin-bottom: 6px;
       color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     p.subtitle {
       font-size: 13px;
       color: #94a3b8;
       margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .device-info {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #a5f3fc;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
     }
     .item {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     label {
       display: block;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #cbd5e1;
+      letter-spacing: 0.6px;
+      color: #94a3b8;
       margin-bottom: 6px;
     }
     .input-group {
@@ -53,13 +71,13 @@
     input[type="text"] {
       flex: 1;
       padding: 10px 14px;
-      font-size: 15px;
+      font-size: 14px;
       background: #0f172a;
       border: 1px solid #475569;
       border-radius: 6px;
       color: #f1f5f9;
       outline: none;
-      font-family: monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
     input[type="text"]:focus {
       border-color: #38bdf8;
@@ -69,8 +87,8 @@
       color: #ffffff;
       border: none;
       border-radius: 6px;
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 10px 16px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.15s ease, transform 0.1s ease;
@@ -90,10 +108,10 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      padding: 10px 18px;
+      padding: 10px 16px;
       color: white;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
     }
     .btn-link:hover {
@@ -106,81 +124,100 @@
     }
     textarea {
       width: 100%;
-      height: 100px;
-      padding: 10px;
+      height: 120px;
+      padding: 12px;
       background: #0f172a;
       border: 1px solid #475569;
       border-radius: 6px;
       color: #f1f5f9;
-      font-family: monospace;
-      font-size: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
       outline: none;
       resize: vertical;
     }
     textarea:focus {
       border-color: #38bdf8;
     }
+    .footer-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>📋 Fast Copy & Paste Pad</h1>
-    <p class="subtitle">Click "Copy" on any field to copy to clipboard, or click "Open Link" to launch the website in a new tab.</p>
+    <h1>🧪 OS Sandbox Lab — Testing Pad</h1>
+    <p class="subtitle">Quick testing credentials, URLs, and scratchpad for this ephemeral cloud runner. 1-click copy directly into your container clipboard.</p>
 
-    <!-- Username -->
+    <!-- Environment & Device Info -->
+    <div class="device-info">
+      <div><strong>Screen:</strong> <span id="disp-screen">1280x800</span></div>
+      <div><strong>Viewport:</strong> <span id="disp-viewport">1280x800</span></div>
+      <div><strong>Platform:</strong> <span id="disp-platform">Linux x86_64</span></div>
+    </div>
+
+    <!-- Test Email -->
     <div class="item">
-      <label>Username</label>
+      <label>Test User / Email</label>
       <div class="input-group">
-        <input type="text" id="user" value="TarekRahaman" readonly onclick="this.select()">
-        <button onclick="copyField('user', this)">Copy</button>
+        <input type="text" id="test-user" value="test-tester@example.com" onclick="this.select()">
+        <button onclick="copyField('test-user', this)">Copy</button>
       </div>
     </div>
 
-    <!-- Password -->
+    <!-- Test Password -->
     <div class="item">
-      <label>Password</label>
+      <label>Test Password</label>
       <div class="input-group">
-        <input type="text" id="pass" value="passwordforhacker@#12AXO" readonly onclick="this.select()">
-        <button onclick="copyField('pass', this)">Copy</button>
+        <input type="text" id="test-pass" value="Sandbox#Test!2026" onclick="this.select()">
+        <button onclick="copyField('test-pass', this)">Copy</button>
       </div>
     </div>
 
-    <!-- Phone -->
+    <!-- Target Test URL -->
     <div class="item">
-      <label>Phone Number</label>
+      <label>Target Application URL</label>
       <div class="input-group">
-        <input type="text" id="phone" value="01987654323" readonly onclick="this.select()">
-        <button onclick="copyField('phone', this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Referral Code -->
-    <div class="item">
-      <label>Referral Code</label>
-      <div class="input-group">
-        <input type="text" id="ref" value="MB1NHRXN" readonly onclick="this.select()">
-        <button onclick="copyField('ref', this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- URL -->
-    <div class="item">
-      <label>Registration URL</label>
-      <div class="input-group">
-        <input type="text" id="url" value="https://nexorapaybd.com/register?ref=MB1NHRXN" readonly onclick="this.select()">
-        <button onclick="copyField('url', this)">Copy</button>
-        <a class="btn-link" href="https://nexorapaybd.com/register?ref=MB1NHRXN" target="_blank">Open Link ↗</a>
+        <input type="text" id="test-url" value="https://google.com" onclick="this.select()">
+        <button onclick="copyField('test-url', this)">Copy</button>
+        <a class="btn-link" id="open-url-btn" href="https://google.com" target="_blank">Open URL ↗</a>
       </div>
     </div>
 
     <!-- Scratchpad for additional text -->
     <div class="scratchpad">
-      <label>Scratchpad (Type or paste anything else here)</label>
-      <textarea id="scratch" placeholder="Write or paste any notes or extra details here..."></textarea>
+      <label>Shared Scratchpad (Auto-saved locally)</label>
+      <textarea id="scratch" placeholder="Type or paste API keys, auth tokens, logs, or payload snippets here..."></textarea>
+    </div>
+
+    <div class="footer-note">
+      Ephemeral OS Runner • Session auto-disposes on workflow timeout
     </div>
   </div>
 
   <script>
+    // Populate device metrics
+    document.getElementById('disp-screen').innerText = screen.width + 'x' + screen.height;
+    document.getElementById('disp-viewport').innerText = window.innerWidth + 'x' + window.innerHeight;
+    document.getElementById('disp-platform').innerText = navigator.platform || 'Unknown';
+
+    // Auto-update URL button target
+    const urlInput = document.getElementById('test-url');
+    const openBtn = document.getElementById('open-url-btn');
+    urlInput.addEventListener('input', () => {
+      openBtn.href = urlInput.value;
+    });
+
+    // Scratchpad persistence
+    const scratch = document.getElementById('scratch');
+    const saved = localStorage.getItem('os_sandbox_scratch');
+    if (saved) scratch.value = saved;
+    scratch.addEventListener('input', () => {
+      localStorage.setItem('os_sandbox_scratch', scratch.value);
+    });
+
     function copyField(elementId, btn) {
       const input = document.getElementById(elementId);
       input.select();

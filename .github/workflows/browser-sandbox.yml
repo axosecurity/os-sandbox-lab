@@ -23,9 +23,7 @@ on:
         options:
           - "custom_repo_dockerfile"   # Uses this repo's Dockerfile (Alpine + Chromium + notes.html)
           - "linuxserver_chromium"     # Uses prebuilt Chromium desktop container
-  push:
-    branches:
-      - main
+# Push triggers are intentionally removed so GitHub Actions only runs when explicitly dispatched manually.
 
 jobs:
   sandbox:

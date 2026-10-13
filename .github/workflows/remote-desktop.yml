@@ -15,9 +15,7 @@ on:
           - "120"
           - "180"
           - "360"
-  push:
-    branches:
-      - main
+# Push triggers are intentionally removed so GitHub Actions only runs when explicitly dispatched manually.
 
 jobs:
   remote-desktop-windows:
